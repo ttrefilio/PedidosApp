@@ -1,4 +1,6 @@
-﻿namespace PedidosApp.Domain.Entities
+﻿using PedidosApp.Domain.Enums;
+
+namespace PedidosApp.Domain.Entities
 {
     /// <summary>
     /// Representação de um pedido no sistema.
@@ -13,11 +15,5 @@
         public required Status Status { get; set; }
         public required bool Ativo { get; set; }
     }
-
-    public enum Status
-    {
-        Pendente,
-        Aprovado,
-        Rejeitado
-    }
+    
 }

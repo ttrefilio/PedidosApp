@@ -1,3 +1,4 @@
+using PedidosApp.Infra.Data.Extensions;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,9 @@ builder.Services.AddRouting(map => map.LowercaseUrls = true);
 //Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//Adicionando metodos de extenção para injeção de dependencia
+builder.Services.AddEntityFrameworkExtension(builder.Configuration);
 
 var app = builder.Build();
 
