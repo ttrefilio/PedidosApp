@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  compilar:
     runs-on: windows-latest
     permissions:
       contents: read #This is required for actions/checkout
@@ -34,10 +34,16 @@ jobs:
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
-
-  deploy:
+  testar:
     runs-on: windows-latest
-    needs: build
+    needs: compilar
+    steps:
+      -  name: Set up Tests
+         run: echo "Configurando o ambiente de testes"
+
+  implantar:
+    runs-on: windows-latest
+    needs: testar
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
